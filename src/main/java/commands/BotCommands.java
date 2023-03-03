@@ -40,11 +40,12 @@ public class BotCommands extends ListenerAdapter {
 				event.reply("No inputs were given").queue();
 			}
 
-			if(option2.getAsString().equals("F")){
+			if(option2.getAsString().equalsIgnoreCase("F")){
 				
 				double output = (option1.getAsDouble() - 32)*(5/9);
 				event.reply(option1.getAsDouble() + " F is " + output + " C in celsius.").queue();
-			}else if(option2.getAsString().equals("C")){
+				
+			}else if(option2.getAsString().equalsIgnoreCase("C")){
 				double output = ((9*option1.getAsDouble())/5)+32;
 				
 				event.reply(option1.getAsDouble() + " C is " + output + " F in fahrenheit.").queue();
