@@ -11,8 +11,6 @@ public class BotCommands extends ListenerAdapter {
 	@Override
 	public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
 
-		//super.onSlashCommandInteraction(event);
-		
 		if (event.getName().equals("launch")) {
 			
 			event.reply("Missiles launching in 3... 2... 1...").queue();
@@ -29,6 +27,31 @@ public class BotCommands extends ListenerAdapter {
 			String favoriteFood = option.getAsString();
 			
 			event.reply("Your favorite food is " + favoriteFood + ".").queue();
+		}
+
+		 //Temperature conversion function
+		 else if(event.getName().equals("convert")){
+
+			OptionMapping option1 = event.getOption("temperature");
+			OptionMapping option2 = event.getOption("units");
+
+			if(option1 == null || option2 == null){
+				event.reply("No inputs were given").queue();
+			}
+
+			if(option2.getAsString() == "F"){
+
+				event.deferReply().queue();
+				double output = (option1.getAsInt() - 32)*(5/9);
+				event.getHook().sendMessage("The temperature in Celsius is " + output + " C").queue();
+			}else if(option2.getAsString() == "C"){
+
+				event.deferReply().queue();
+				double output = ((9*option1.getAsInt())/5)+32;
+				event.getHook().sendMessage("The temperature in Fahrenheit is " + output + " F").queue();
+			}
+
+
 		}
 	}
 

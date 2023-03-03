@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import commands.BotCommands;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
+import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
@@ -33,11 +34,15 @@ public class DiscordBot extends ListenerAdapter{
 		
 		Guild guild1 = bot.getGuildById(1066262213431656488l);
 		Guild guild2 = bot.getGuildById(690742864849797131L);
-		//if(guild != null) {
+		
 			bot.upsertCommand("launch", "Sponsored by Nuka Cola").queue();
-			//guild2.upsertCommand("launch", "Sponsored by Nuka Cola").queue();
+			
 			bot.upsertCommand("food", "Name of your favorite food.").addOption(OptionType.STRING, "foodname", "Name of your favorite food").queue();
-		//}
+			
+			bot.upsertCommand("convert", "Convert temperature from Celsius to Fahrenheit or vice versa.")
+			.addOptions(new OptionData(OptionType.INTEGER, "temperature", "Enter the temperature as a decimal value."), 
+								new OptionData(OptionType.STRING, "units", "If the temperature you want to convert is in Celsius then enter 'C' and for Fahrenheit, enter 'F'")).queue();
+			
 		
 	}
 
