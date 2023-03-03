@@ -35,20 +35,20 @@ public class BotCommands extends ListenerAdapter {
 			OptionMapping option1 = event.getOption("temperature");
 			OptionMapping option2 = event.getOption("units");
 
+			event.reply("Sup").queue();
+
 			if(option1 == null || option2 == null){
 				event.reply("No inputs were given").queue();
 			}
 
 			if(option2.getAsString() == "F"){
-
-				event.deferReply().queue();
-				double output = (option1.getAsInt() - 32)*(5/9);
-				event.getHook().sendMessage("The temperature in Celsius is " + output + " C").queue();
+				
+				//double output = (option1.getAsInt() - 32)*(5/9);
+				event.reply("The temperature in Celsius is " + option1.getAsInt() + " C").queue();
 			}else if(option2.getAsString() == "C"){
-
-				event.deferReply().queue();
-				double output = ((9*option1.getAsInt())/5)+32;
-				event.getHook().sendMessage("The temperature in Fahrenheit is " + output + " F").queue();
+				//double output = ((9*option1.getAsInt())/5)+32;
+				
+				event.reply("The temperature in Fahrenheit is " + option1.getAsInt() + " F").queue();
 			}
 
 
