@@ -40,8 +40,9 @@ public class DiscordBot extends ListenerAdapter{
 			bot.upsertCommand("food", "Name of your favorite food.").addOption(OptionType.STRING, "foodname", "Name of your favorite food").queue();
 			
 			bot.upsertCommand("convert", "Convert temperature from Celsius to Fahrenheit or vice versa.")
-			.addOptions(new OptionData(OptionType.INTEGER, "temperature", "Enter the temperature as a decimal value."), 
-								new OptionData(OptionType.STRING, "units", "If the temperature you want to convert is in Celsius then enter 'C' and for Fahrenheit, enter 'F'")).queue();
+			.addOptions(new OptionData(OptionType.NUMBER, "temperature", "Enter the temperature as a decimal value."), 
+						new OptionData(OptionType.STRING, "units", "If the temperature you want to convert is in Celsius then enter 'C' and for Fahrenheit, enter 'F'"))
+						.queue();
 			
 		
 	}
